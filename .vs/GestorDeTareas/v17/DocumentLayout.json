@@ -1,28 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|c:\\users\\yordi\\source\\repos\\gestordetareas\\gestordetareas\\formtareasurgentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\formtareasurgentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|c:\\users\\yordi\\source\\repos\\gestordetareas\\gestordetareas\\formopciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\formopciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|c:\\users\\yordi\\source\\repos\\gestordetareas\\gestordetareas\\forminicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\forminicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|c:\\users\\yordi\\source\\repos\\gestordetareas\\gestordetareas\\formconsultartarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\formconsultartarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|c:\\users\\yordi\\source\\repos\\gestordetareas\\gestordetareas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -30,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -49,69 +28,8 @@
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FormTareasUrgentes.cs",
-              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\FormTareasUrgentes.cs",
-              "RelativeDocumentMoniker": "GestorDeTareas\\FormTareasUrgentes.cs",
-              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\FormTareasUrgentes.cs",
-              "RelativeToolTip": "GestorDeTareas\\FormTareasUrgentes.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAqwD4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T16:25:52.703Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FormOpciones.cs",
-              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\FormOpciones.cs",
-              "RelativeDocumentMoniker": "GestorDeTareas\\FormOpciones.cs",
-              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\FormOpciones.cs",
-              "RelativeToolTip": "GestorDeTareas\\FormOpciones.cs",
-              "ViewState": "AgIAAIUAAAAAAAAAAAAkwJoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T16:25:50.157Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormInicio.cs",
-              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\FormInicio.cs",
-              "RelativeDocumentMoniker": "GestorDeTareas\\FormInicio.cs",
-              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\FormInicio.cs",
-              "RelativeToolTip": "GestorDeTareas\\FormInicio.cs",
-              "ViewState": "AgIAAMMAAAAAAAAAAAAIwNQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T16:25:47.084Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FormConsultarTarea.cs",
-              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\FormConsultarTarea.cs",
-              "RelativeDocumentMoniker": "GestorDeTareas\\FormConsultarTarea.cs",
-              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\FormConsultarTarea.cs",
-              "RelativeToolTip": "GestorDeTareas\\FormConsultarTarea.cs",
-              "ViewState": "AgIAAMEAAAAAAAAAAADwv9QAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T16:25:43.873Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Form1.cs",
-              "RelativeDocumentMoniker": "GestorDeTareas\\Form1.cs",
-              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Form1.cs",
-              "RelativeToolTip": "GestorDeTareas\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T16:25:41.258Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             }
           ]
         }

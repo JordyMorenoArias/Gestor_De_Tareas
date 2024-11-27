@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace GestorDeTareas
+namespace GestorDeTareas.Models
 {
     // Clase que gestiona la lista de tareas pendientes.
     public class Gestor

@@ -22,3 +22,4 @@ C:\Users\yordi\source\repos\GestorDeTareas\GestorDeTareas\obj\Debug\net8.0-windo
 C:\Users\yordi\source\repos\GestorDeTareas\GestorDeTareas\obj\Debug\net8.0-windows\GestorDeTareas.FormInicio.resources
 C:\Users\yordi\source\repos\GestorDeTareas\GestorDeTareas\obj\Debug\net8.0-windows\GestorDeTareas.FormOpciones.resources
 C:\Users\yordi\source\repos\GestorDeTareas\GestorDeTareas\obj\Debug\net8.0-windows\GestorDeTareas.FormTareasUrgentes.resources
+C:\Users\yordi\source\repos\GestorDeTareas\GestorDeTareas\obj\Debug\net8.0-windows\GestorDeTareas.sourcelink.json

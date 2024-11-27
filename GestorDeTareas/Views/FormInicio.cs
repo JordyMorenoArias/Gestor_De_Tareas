@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestorDeTareas.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -140,7 +141,7 @@ namespace GestorDeTareas
                 foreach (Tarea tarea in tareas)
                 {
                     tarea.Accion = "Eliminado"; // Marca la acción como "Eliminado"
-                    Tarea tareaOriginal = tarea.Copiar(); // Crea una copia de la tarea original
+                    Tarea tareaOriginal = tarea; // Crea una copia de la tarea original
 
                     // Registra la acción de eliminar la tarea en el historial de acciones
                     PilaHistorialAcciones.RegistrarAccion(tareaOriginal, null, "Eliminado");

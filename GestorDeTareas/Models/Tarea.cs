@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestorDeTareas
+namespace GestorDeTareas.Models
 {
     public class Tarea
     {
@@ -28,27 +28,14 @@ namespace GestorDeTareas
         // Constructor para crear nuevas tareas
         public Tarea(string nombre, string descripcion, int prioridad, string categoria, DateTime fechaVencimiento)
         {
-            this.Id = ++contadorId;                 // Asignar un Id único automáticamente
-            this.Nombre = nombre;
-            this.Descripcion = descripcion;
-            this.Prioridad = prioridad;
-            this.Categoria = categoria;
-            this.FechaVencimiento = fechaVencimiento;
-            this.Estatus = "Pendiente";
-            this.FechaCreacion = DateTime.Now;
-        }
-
-        // Método para clonar una tarea
-        public Tarea Copiar()
-        {
-            return new Tarea(Nombre, Descripcion, Prioridad, Categoria, FechaVencimiento)
-            {
-                Id = this.Id,                        // Copiar también el Id
-                Estatus = this.Estatus,
-                FechaCreacion = this.FechaCreacion,
-                FechaAccion = this.FechaAccion,
-                Accion = this.Accion
-            };
+            Id = ++contadorId;                 // Asignar un Id único automáticamente
+            Nombre = nombre;
+            Descripcion = descripcion;
+            Prioridad = prioridad;
+            Categoria = categoria;
+            FechaVencimiento = fechaVencimiento;
+            Estatus = "Pendiente";
+            FechaCreacion = DateTime.Now;
         }
 
     }

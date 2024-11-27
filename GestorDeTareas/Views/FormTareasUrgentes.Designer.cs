@@ -45,9 +45,9 @@
             // 
             lblHistorial.AutoSize = true;
             lblHistorial.Font = new Font("Century Gothic", 22.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblHistorial.Location = new Point(32, 38);
+            lblHistorial.Location = new Point(28, 28);
             lblHistorial.Name = "lblHistorial";
-            lblHistorial.Size = new Size(332, 44);
+            lblHistorial.Size = new Size(275, 37);
             lblHistorial.TabIndex = 4;
             lblHistorial.Text = "TAREAS URGENTES";
             // 
@@ -61,12 +61,13 @@
             dgvTareaUrgente.Columns.AddRange(new DataGridViewColumn[] { ColumnNombre, ColumnDescripcion, ColumnFechaLimite, ColumnEstatus, ColumnCategoria, ColumnID });
             dgvTareaUrgente.Cursor = Cursors.Hand;
             dgvTareaUrgente.GridColor = SystemColors.ActiveBorder;
-            dgvTareaUrgente.Location = new Point(32, 141);
+            dgvTareaUrgente.Location = new Point(28, 117);
+            dgvTareaUrgente.Margin = new Padding(3, 2, 3, 2);
             dgvTareaUrgente.Name = "dgvTareaUrgente";
             dgvTareaUrgente.RowHeadersVisible = false;
             dgvTareaUrgente.RowHeadersWidth = 51;
             dgvTareaUrgente.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvTareaUrgente.Size = new Size(806, 457);
+            dgvTareaUrgente.Size = new Size(705, 343);
             dgvTareaUrgente.TabIndex = 3;
             dgvTareaUrgente.CellDoubleClick += dgvTareaUrgente_CellDoubleClick_1;
             // 
@@ -116,9 +117,10 @@
             // btnHecho
             // 
             btnHecho.Font = new Font("Century Gothic", 10.8F);
-            btnHecho.Location = new Point(301, 109);
+            btnHecho.Location = new Point(249, 78);
+            btnHecho.Margin = new Padding(3, 2, 3, 2);
             btnHecho.Name = "btnHecho";
-            btnHecho.Size = new Size(124, 27);
+            btnHecho.Size = new Size(108, 31);
             btnHecho.TabIndex = 14;
             btnHecho.Text = "Hecho";
             btnHecho.UseVisualStyleBackColor = true;
@@ -128,22 +130,23 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(32, 112);
+            label1.Location = new Point(28, 84);
             label1.Name = "label1";
-            label1.Size = new Size(263, 21);
+            label1.Size = new Size(215, 19);
             label1.TabIndex = 15;
             label1.Text = "Completar Tarea mas Antigua";
             // 
             // FormTareasUrgentes
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(868, 643);
+            ClientSize = new Size(760, 482);
             Controls.Add(label1);
             Controls.Add(btnHecho);
             Controls.Add(lblHistorial);
             Controls.Add(dgvTareaUrgente);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormTareasUrgentes";
             Text = "FormTareasUrgentes";
             ((System.ComponentModel.ISupportInitialize)dgvTareaUrgente).EndInit();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestorDeTareas.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -80,7 +81,7 @@ namespace GestorDeTareas
                 {
                     // Se guarda la acción de "Modificar" y se copia la tarea original.
                     tareaSeleccionada.Accion = "Modificar";
-                    Tarea tareaOriginal = tareaSeleccionada.Copiar(); // Copia de la tarea original.
+                    Tarea tareaOriginal = tareaSeleccionada; // Copia de la tarea original.
 
                     // Se crea una nueva tarea con los valores modificados.
                     Tarea tareaModificada = new Tarea(txtNombre.Text, txtDescripcion.Text, (int)txtPrioridad.Value, txtCategoria.Text, txtFechaLimite.Value);
@@ -170,7 +171,7 @@ namespace GestorDeTareas
                 tareaSeleccionada.Accion = "Eliminado";
 
                 // Se copia la tarea original antes de eliminarla.
-                Tarea tareaOriginal = tareaSeleccionada.Copiar();
+                Tarea tareaOriginal = tareaSeleccionada;
 
                 // Se registra la acción de eliminar en el historial.
                 PilaHistorialAcciones.RegistrarAccion(tareaOriginal, null, "Eliminado");

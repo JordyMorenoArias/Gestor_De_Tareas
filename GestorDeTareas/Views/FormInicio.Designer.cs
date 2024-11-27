@@ -59,12 +59,13 @@
             dgvPrincipal.Columns.AddRange(new DataGridViewColumn[] { ColumnCheckBox, ColumnNombre, ColumnDescripcion, ColumnFechaLimite, ColumnPrioridad, ColumnEstatus, ColumnCategoria, ColumnID });
             dgvPrincipal.Cursor = Cursors.Hand;
             dgvPrincipal.GridColor = SystemColors.ActiveBorder;
-            dgvPrincipal.Location = new Point(32, 155);
+            dgvPrincipal.Location = new Point(28, 116);
+            dgvPrincipal.Margin = new Padding(3, 2, 3, 2);
             dgvPrincipal.Name = "dgvPrincipal";
             dgvPrincipal.RowHeadersVisible = false;
             dgvPrincipal.RowHeadersWidth = 51;
             dgvPrincipal.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPrincipal.Size = new Size(786, 406);
+            dgvPrincipal.Size = new Size(688, 304);
             dgvPrincipal.TabIndex = 0;
             dgvPrincipal.CellDoubleClick += dgvPrincipal_CellDoubleClick;
             // 
@@ -134,9 +135,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(32, 33);
+            label1.Location = new Point(28, 25);
             label1.Name = "label1";
-            label1.Size = new Size(322, 40);
+            label1.Size = new Size(256, 33);
             label1.TabIndex = 1;
             label1.Text = "GESTOR DE TAREAS";
             // 
@@ -145,9 +146,10 @@
             cmbEstatus.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbEstatus.FormattingEnabled = true;
             cmbEstatus.Items.AddRange(new object[] { "Pendiente", "En Proceso", "Urgente", "Completado" });
-            cmbEstatus.Location = new Point(109, 574);
+            cmbEstatus.Location = new Point(95, 430);
+            cmbEstatus.Margin = new Padding(3, 2, 3, 2);
             cmbEstatus.Name = "cmbEstatus";
-            cmbEstatus.Size = new Size(151, 29);
+            cmbEstatus.Size = new Size(133, 27);
             cmbEstatus.TabIndex = 2;
             cmbEstatus.Text = "Pendiente";
             // 
@@ -156,9 +158,10 @@
             cmbOrdenamiento.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbOrdenamiento.FormattingEnabled = true;
             cmbOrdenamiento.Items.AddRange(new object[] { "Reciente", "Prioridad", "Antiguo", "Fecha Limite" });
-            cmbOrdenamiento.Location = new Point(155, 107);
+            cmbOrdenamiento.Location = new Point(136, 80);
+            cmbOrdenamiento.Margin = new Padding(3, 2, 3, 2);
             cmbOrdenamiento.Name = "cmbOrdenamiento";
-            cmbOrdenamiento.Size = new Size(151, 29);
+            cmbOrdenamiento.Size = new Size(133, 27);
             cmbOrdenamiento.TabIndex = 5;
             cmbOrdenamiento.Text = "Reciente";
             cmbOrdenamiento.SelectedIndexChanged += cmbOrdenamiento_SelectedIndexChanged;
@@ -167,18 +170,19 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(32, 110);
+            label2.Location = new Point(28, 82);
             label2.Name = "label2";
-            label2.Size = new Size(117, 21);
+            label2.Size = new Size(100, 20);
             label2.TabIndex = 6;
             label2.Text = "Ordenar por";
             // 
             // btnAñádir
             // 
             btnAñádir.Font = new Font("Century Gothic", 10.8F);
-            btnAñádir.Location = new Point(380, 574);
+            btnAñádir.Location = new Point(332, 430);
+            btnAñádir.Margin = new Padding(3, 2, 3, 2);
             btnAñádir.Name = "btnAñádir";
-            btnAñádir.Size = new Size(108, 31);
+            btnAñádir.Size = new Size(94, 27);
             btnAñádir.TabIndex = 7;
             btnAñádir.Text = "Añádir Tarea";
             btnAñádir.UseVisualStyleBackColor = true;
@@ -187,9 +191,10 @@
             // btnAplicar
             // 
             btnAplicar.Font = new Font("Century Gothic", 10.8F);
-            btnAplicar.Location = new Point(266, 574);
+            btnAplicar.Location = new Point(233, 430);
+            btnAplicar.Margin = new Padding(3, 2, 3, 2);
             btnAplicar.Name = "btnAplicar";
-            btnAplicar.Size = new Size(108, 31);
+            btnAplicar.Size = new Size(94, 27);
             btnAplicar.TabIndex = 8;
             btnAplicar.Text = "Aplicar";
             btnAplicar.UseVisualStyleBackColor = true;
@@ -199,9 +204,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(32, 577);
+            label3.Location = new Point(28, 433);
             label3.Name = "label3";
-            label3.Size = new Size(71, 21);
+            label3.Size = new Size(58, 20);
             label3.TabIndex = 11;
             label3.Text = "Estatus";
             // 
@@ -211,9 +216,10 @@
             btnDeshacer.IconChar = FontAwesome.Sharp.IconChar.ArrowRotateLeft;
             btnDeshacer.IconColor = Color.Black;
             btnDeshacer.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnDeshacer.Location = new Point(720, 98);
+            btnDeshacer.Location = new Point(630, 74);
+            btnDeshacer.Margin = new Padding(3, 2, 3, 2);
             btnDeshacer.Name = "btnDeshacer";
-            btnDeshacer.Size = new Size(44, 46);
+            btnDeshacer.Size = new Size(38, 34);
             btnDeshacer.TabIndex = 12;
             btnDeshacer.UseVisualStyleBackColor = true;
             btnDeshacer.Click += btnDeshacer_Click;
@@ -224,18 +230,19 @@
             btnRehacer.IconChar = FontAwesome.Sharp.IconChar.ArrowRotateForward;
             btnRehacer.IconColor = Color.Black;
             btnRehacer.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnRehacer.Location = new Point(770, 98);
+            btnRehacer.Location = new Point(674, 74);
+            btnRehacer.Margin = new Padding(3, 2, 3, 2);
             btnRehacer.Name = "btnRehacer";
-            btnRehacer.Size = new Size(48, 46);
+            btnRehacer.Size = new Size(42, 34);
             btnRehacer.TabIndex = 13;
             btnRehacer.UseVisualStyleBackColor = true;
             btnRehacer.Click += btnRehacer_Click;
             // 
             // FormInicio
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(868, 643);
+            ClientSize = new Size(760, 482);
             Controls.Add(btnRehacer);
             Controls.Add(btnDeshacer);
             Controls.Add(label3);
@@ -247,6 +254,7 @@
             Controls.Add(label1);
             Controls.Add(dgvPrincipal);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormInicio";
             Text = "FormInicio";
             ((System.ComponentModel.ISupportInitialize)dgvPrincipal).EndInit();

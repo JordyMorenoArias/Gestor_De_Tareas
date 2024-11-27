@@ -39,4 +39,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\Images\" />
+    <Folder Include="Assets\Icons\" />
+    <Folder Include="Data\" />
+  </ItemGroup>
+
 </Project>
