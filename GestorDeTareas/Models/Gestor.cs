@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GestorDeTareas.Data;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Permissions;
@@ -14,74 +16,110 @@ namespace GestorDeTareas.Models
     {
         // Arreglo privado que contiene todas las tareas.
         private static List<Tarea> tareas = new List<Tarea>();
+        private static Conexión conexión = new Conexión("Server=LAPTOP-989OF5PS\\MSSQLSERVER02;Database=GestorDeTareas;Integrated Security=True;TrustServerCertificate=True");
 
         // Método para agregar una nueva tarea a la lista.
-        public static void AgregarTarea(Tarea tarea)
+        public static async Task AgregarTarea(Tarea tarea)
         {
-            tareas.Add(tarea);
-        }
-
-        // Método para eliminar una tarea de la lista.
-        public static void EliminarTarea(Tarea tarea)
-        {
-            tareas.Remove(tarea);
-        }
-
-        // Método para modificar una tarea existente en la lista.
-        public static void ModificarTarea(Tarea tareaOriginal, Tarea tareaModificada)
-        {
-            var indice = tareas.IndexOf(tareaOriginal);
-            if (indice != -1)
+            using (var connection = await conexión.AbrirConexiónAsync())
             {
-                tareas[indice] = tareaModificada;
+                var query = "INSERT INTO Tareas (nombre, descripcion, prioridad, categoria, fechaVencimiento, estatus, fechaCreacion, fechaAccion, accion, activo) VALUES (@Nombre, @Descripcion, @Prioridad, @Categoria, @FechaVencimiento, @Estatus, @FechaCreacion, @FechaAccion, @Accion, @Activo)";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Nombre", tarea.Nombre);
+                    command.Parameters.AddWithValue("@Descripcion", tarea.Descripcion);
+                    command.Parameters.AddWithValue("@Prioridad", tarea.Prioridad);
+                    command.Parameters.AddWithValue("@Categoria", tarea.Categoria);
+                    command.Parameters.AddWithValue("@FechaVencimiento", tarea.FechaVencimiento);
+                    command.Parameters.AddWithValue("@Estatus", tarea.Estatus);
+                    command.Parameters.AddWithValue("@FechaCreacion", tarea.FechaCreacion);
+                    command.Parameters.AddWithValue("@FechaAccion", tarea.FechaAccion);
+                    command.Parameters.AddWithValue("@Accion", tarea.Accion);
+                    command.Parameters.AddWithValue("@Activo", tarea.Activo); // Mapeo de bool a bit
+                    await command.ExecuteNonQueryAsync();
+                }
             }
         }
 
-        // Ordena la lista de tareas en orden descendente según la fecha de creación.
-        public static void OrdenarReciente()
+        // Método para "eliminar" una tarea de la lista (cambiar su valor activo a false).
+        public static async Task EliminarTarea(Tarea tarea)
         {
-            tareas = tareas.OrderByDescending(t => t.FechaCreacion).ToList();
-        }
-
-        // Ordena la lista de tareas en orden ascendente según la fecha de creación.
-        public static void OrdenarAntiguo()
-        {
-            tareas = tareas.OrderBy(t => t.FechaCreacion).ToList();
-        }
-
-        // Ordena la lista de tareas en orden ascendente según la fecha de vencimiento.
-        public static void OrdenarFechaLimite()
-        {
-            tareas = tareas.OrderBy(t => t.FechaVencimiento).ToList();
-        }
-
-        // Ordena la lista de tareas en orden ascendente según la prioridad.
-        public static void OrdenarPrioridad()
-        {
-            tareas = tareas.OrderBy(t => t.Prioridad).ToList();
-        }
-
-        // Este método decide qué tipo de ordenamiento aplicar a la lista de tareas 
-        public static void Ordernamiento(string TipoDeOrden)
-        {
-            switch (TipoDeOrden)
+            using (var connection = await conexión.AbrirConexiónAsync())
             {
-                case "Prioridad":
-                    OrdenarPrioridad();
-                    break;
-                case "Antiguo":
-                    OrdenarAntiguo();
-                    break;
-                case "Fecha Limite":
-                    OrdenarFechaLimite();
-                    break;
-                default:
-                    OrdenarReciente();
-                    break;
+                var query = "UPDATE Tareas SET activo = 0 WHERE Id = @Id";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", tarea.Id);
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
+        // Método para modificar una tarea existente en la lista.
+        public static async Task ModificarTarea(int tareaID, Tarea tareaModificada)
+        {
+            using (var connection = await conexión.AbrirConexiónAsync())
+            {
+                var query = "UPDATE Tareas SET nombre = @Nombre, descripcion = @Descripcion, prioridad = @Prioridad, categoria = @Categoria, " +
+                            "fechaVencimiento = @FechaVencimiento, estatus = @Estatus, fechaAccion = @FechaAccion, accion = @Accion, activo = @Activo WHERE id = @Id AND activo = 1";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", tareaID);
+                    command.Parameters.AddWithValue("@Nombre", tareaModificada.Nombre);
+                    command.Parameters.AddWithValue("@Descripcion", tareaModificada.Descripcion);
+                    command.Parameters.AddWithValue("@Prioridad", tareaModificada.Prioridad);
+                    command.Parameters.AddWithValue("@Categoria", tareaModificada.Categoria);
+                    command.Parameters.AddWithValue("@FechaVencimiento", tareaModificada.FechaVencimiento);
+                    command.Parameters.AddWithValue("@Estatus", tareaModificada.Estatus);
+                    command.Parameters.AddWithValue("@FechaAccion", tareaModificada.FechaAccion);
+                    command.Parameters.AddWithValue("@Accion", tareaModificada.Accion);
+                    command.Parameters.AddWithValue("@Activo", tareaModificada.Activo);
+                    await command.ExecuteNonQueryAsync();
+                }
             }
         }
 
         // Devuelve la lista ordenada de tareas.
-        public static List<Tarea> ObtenerTareas() => tareas;
+        public static async Task<List<Tarea>> ObtenerTareas()
+        {
+            List<Tarea> tareas = new List<Tarea>();
+            try
+            {
+                using (var connection = await conexión.AbrirConexiónAsync())
+                {
+                    string query = "SELECT * FROM Tareas WHERE activo = 1";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                Tarea tarea = new Tarea(
+                                    reader.GetInt32(0), // Id
+                                    reader.GetString(1), // Nombre
+                                    reader.GetString(2), // Descripcion
+                                    reader.GetInt32(3), // Prioridad
+                                    reader.GetString(4), // Categoria
+                                    reader.GetDateTime(5) // FechaVencimiento
+                                )
+                                {
+                                    Estatus = reader.IsDBNull(6) ? string.Empty : reader.GetString(6), // Estatus
+                                    FechaCreacion = reader.IsDBNull(7) ? DateTime.MinValue : reader.GetDateTime(7), // FechaCreacion
+                                    FechaAccion = reader.IsDBNull(8) ? DateTime.MinValue : reader.GetDateTime(8), // FechaAccion
+                                    Accion = reader.IsDBNull(9) ? string.Empty : reader.GetString(9), // Accion
+                                    Activo = reader.GetBoolean(10) // Activo
+                                };
+                                tareas.Add(tarea);
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                // Manejo de excepciones
+            }
+            return tareas;
+        }
     }
 }

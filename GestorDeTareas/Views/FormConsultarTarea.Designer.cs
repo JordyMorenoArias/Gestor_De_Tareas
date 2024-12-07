@@ -55,9 +55,10 @@
             btnCerrar.IconChar = FontAwesome.Sharp.IconChar.ChevronCircleLeft;
             btnCerrar.IconColor = Color.Black;
             btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCerrar.Location = new Point(1, 12);
+            btnCerrar.Location = new Point(1, 9);
+            btnCerrar.Margin = new Padding(3, 2, 3, 2);
             btnCerrar.Name = "btnCerrar";
-            btnCerrar.Size = new Size(48, 43);
+            btnCerrar.Size = new Size(42, 32);
             btnCerrar.TabIndex = 82;
             btnCerrar.UseVisualStyleBackColor = false;
             btnCerrar.Click += btnCerrar_Click;
@@ -65,9 +66,10 @@
             // btnEliminar
             // 
             btnEliminar.Font = new Font("Century Gothic", 9F);
-            btnEliminar.Location = new Point(29, 540);
+            btnEliminar.Location = new Point(25, 405);
+            btnEliminar.Margin = new Padding(3, 2, 3, 2);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(166, 39);
+            btnEliminar.Size = new Size(145, 29);
             btnEliminar.TabIndex = 81;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -77,9 +79,10 @@
             // btnModificar
             // 
             btnModificar.Font = new Font("Century Gothic", 9F);
-            btnModificar.Location = new Point(208, 540);
+            btnModificar.Location = new Point(182, 405);
+            btnModificar.Margin = new Padding(3, 2, 3, 2);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(164, 39);
+            btnModificar.Size = new Size(144, 29);
             btnModificar.TabIndex = 80;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -89,28 +92,31 @@
             // txtPrioridad
             // 
             txtPrioridad.Font = new Font("Century Gothic", 9F);
-            txtPrioridad.Location = new Point(29, 384);
+            txtPrioridad.Location = new Point(25, 288);
+            txtPrioridad.Margin = new Padding(3, 2, 3, 2);
             txtPrioridad.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
             txtPrioridad.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             txtPrioridad.Name = "txtPrioridad";
-            txtPrioridad.Size = new Size(152, 26);
+            txtPrioridad.Size = new Size(133, 22);
             txtPrioridad.TabIndex = 79;
             txtPrioridad.Value = new decimal(new int[] { 5, 0, 0, 0 });
             // 
             // txtFechaLimite
             // 
             txtFechaLimite.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtFechaLimite.Location = new Point(29, 466);
+            txtFechaLimite.Location = new Point(25, 350);
+            txtFechaLimite.Margin = new Padding(3, 2, 3, 2);
             txtFechaLimite.Name = "txtFechaLimite";
-            txtFechaLimite.Size = new Size(343, 26);
+            txtFechaLimite.Size = new Size(301, 22);
             txtFechaLimite.TabIndex = 78;
             // 
             // btnCrear
             // 
             btnCrear.Font = new Font("Century Gothic", 9F);
-            btnCrear.Location = new Point(208, 540);
+            btnCrear.Location = new Point(182, 405);
+            btnCrear.Margin = new Padding(3, 2, 3, 2);
             btnCrear.Name = "btnCrear";
-            btnCrear.Size = new Size(164, 39);
+            btnCrear.Size = new Size(144, 29);
             btnCrear.TabIndex = 77;
             btnCrear.Text = "Crear";
             btnCrear.UseVisualStyleBackColor = true;
@@ -120,9 +126,9 @@
             // 
             lblTarea.AutoSize = true;
             lblTarea.Font = new Font("Century Gothic", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTarea.Location = new Point(198, 12);
+            lblTarea.Location = new Point(173, 9);
             lblTarea.Name = "lblTarea";
-            lblTarea.Size = new Size(174, 34);
+            lblTarea.Size = new Size(141, 25);
             lblTarea.TabIndex = 76;
             lblTarea.Text = "Crear Tarea";
             // 
@@ -131,9 +137,10 @@
             txtCategoria.Font = new Font("Century Gothic", 9F);
             txtCategoria.FormattingEnabled = true;
             txtCategoria.Items.AddRange(new object[] { "Personal", "Estudios", "Trabajo" });
-            txtCategoria.Location = new Point(187, 384);
+            txtCategoria.Location = new Point(164, 288);
+            txtCategoria.Margin = new Padding(3, 2, 3, 2);
             txtCategoria.Name = "txtCategoria";
-            txtCategoria.Size = new Size(185, 28);
+            txtCategoria.Size = new Size(162, 25);
             txtCategoria.TabIndex = 75;
             txtCategoria.Text = "Personal";
             // 
@@ -141,18 +148,19 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Century Gothic", 9F);
-            label7.Location = new Point(187, 361);
+            label7.Location = new Point(164, 271);
             label7.Name = "label7";
-            label7.Size = new Size(84, 20);
+            label7.Size = new Size(69, 17);
             label7.TabIndex = 74;
             label7.Text = "Categoria";
             // 
             // txtDescripcion
             // 
             txtDescripcion.Font = new Font("Century Gothic", 9F);
-            txtDescripcion.Location = new Point(25, 225);
+            txtDescripcion.Location = new Point(22, 169);
+            txtDescripcion.Margin = new Padding(3, 2, 3, 2);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(347, 95);
+            txtDescripcion.Size = new Size(304, 72);
             txtDescripcion.TabIndex = 73;
             txtDescripcion.Text = "";
             // 
@@ -160,9 +168,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Century Gothic", 9F);
-            label6.Location = new Point(29, 361);
+            label6.Location = new Point(25, 271);
             label6.Name = "label6";
-            label6.Size = new Size(74, 20);
+            label6.Size = new Size(61, 17);
             label6.TabIndex = 72;
             label6.Text = "Prioridad";
             // 
@@ -170,9 +178,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 9F);
-            label5.Location = new Point(29, 443);
+            label5.Location = new Point(25, 332);
             label5.Name = "label5";
-            label5.Size = new Size(100, 20);
+            label5.Size = new Size(84, 17);
             label5.TabIndex = 71;
             label5.Text = "Fecha Limite";
             // 
@@ -180,9 +188,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 9F);
-            label4.Location = new Point(24, 202);
+            label4.Location = new Point(21, 152);
             label4.Name = "label4";
-            label4.Size = new Size(96, 20);
+            label4.Size = new Size(79, 17);
             label4.TabIndex = 70;
             label4.Text = "Descripción";
             // 
@@ -190,25 +198,26 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 9F);
-            label3.Location = new Point(24, 123);
+            label3.Location = new Point(21, 92);
             label3.Name = "label3";
-            label3.Size = new Size(145, 20);
+            label3.Size = new Size(119, 17);
             label3.TabIndex = 69;
             label3.Text = "Nombre Completo";
             // 
             // txtNombre
             // 
             txtNombre.Font = new Font("Century Gothic", 9F);
-            txtNombre.Location = new Point(25, 146);
+            txtNombre.Location = new Point(22, 110);
+            txtNombre.Margin = new Padding(3, 2, 3, 2);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(347, 26);
+            txtNombre.Size = new Size(304, 22);
             txtNombre.TabIndex = 68;
             // 
             // FormConsultarTarea
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(422, 643);
+            ClientSize = new Size(369, 482);
             Controls.Add(btnCerrar);
             Controls.Add(btnEliminar);
             Controls.Add(btnModificar);
@@ -225,6 +234,7 @@
             Controls.Add(label3);
             Controls.Add(txtNombre);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormConsultarTarea";
             Text = "ConsultarTarea";
             ((System.ComponentModel.ISupportInitialize)txtPrioridad).EndInit();

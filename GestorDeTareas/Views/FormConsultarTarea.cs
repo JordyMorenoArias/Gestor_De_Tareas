@@ -69,7 +69,7 @@ namespace GestorDeTareas
         }
 
         // Evento que se dispara al hacer clic en el botón para modificar una tarea.
-        private void btnModificar_Click_1(object sender, EventArgs e)
+        private async void btnModificar_Click_1(object sender, EventArgs e)
         {
             // Se confirma si el usuario realmente desea modificar la tarea.
             DialogResult result = MessageBox.Show("¿Seguro que quieres modificar esta Tarea?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -81,19 +81,20 @@ namespace GestorDeTareas
                 {
                     // Se guarda la acción de "Modificar" y se copia la tarea original.
                     tareaSeleccionada.Accion = "Modificar";
-                    Tarea tareaOriginal = tareaSeleccionada; // Copia de la tarea original.
+                    Tarea tareaAnterior = tareaSeleccionada; // Copia de la tarea original.
 
                     // Se crea una nueva tarea con los valores modificados.
-                    Tarea tareaModificada = new Tarea(txtNombre.Text, txtDescripcion.Text, (int)txtPrioridad.Value, txtCategoria.Text, txtFechaLimite.Value);
+                    Tarea tareaActual = new Tarea(txtNombre.Text, txtDescripcion.Text, (int)txtPrioridad.Value, txtCategoria.Text, txtFechaLimite.Value);
+                    tareaActual.Accion = "Modificar";
 
                     // Se registra la acción en el historial (acción de modificar).
-                    PilaHistorialAcciones.RegistrarAccion(tareaOriginal, tareaModificada, "Modificar");
+                    PilaHistorialAcciones.RegistrarAccion(tareaAnterior, tareaActual, "Modificar");
 
                     // Se actualiza la tarea en el gestor.
-                    Gestor.ModificarTarea(tareaSeleccionada, tareaModificada);
+                    await Gestor.ModificarTarea(tareaSeleccionada.Id, tareaActual);
 
                     // Se actualiza el DataGridView del formulario principal.
-                    FormInicio.ActualizarDGVPrincipal();
+                    await FormInicio.ActualizarDGVPrincipal();
 
                     // Se abre el formulario de opciones después de la modificación.
                     Form1.AbrirFormHijo(new FormOpciones(FormInicio.formPrincipal), FormInicio.formPrincipal.panelContenedor);
@@ -101,7 +102,7 @@ namespace GestorDeTareas
                 else
                 {
                     // En caso de estar trabajando con tareas urgentes, se modifica la tarea en la cola de tareas urgentes.
-                    Tarea tareaModificada = new Tarea(txtNombre.Text, txtDescripcion.Text, (int)txtPrioridad.Value, txtCategoria.Text, txtFechaLimite.Value);
+                    Tarea tareaModificada = new Tarea(tareaSeleccionada.Id, txtNombre.Text, txtDescripcion.Text, (int)txtPrioridad.Value, txtCategoria.Text, txtFechaLimite.Value);
 
                     ColaTareasUrgentes.ModificarTareaUrgente(tareaSeleccionada.Id, tareaModificada);
 
@@ -113,54 +114,61 @@ namespace GestorDeTareas
                 }
             }
             // Llama al método OrdenarDataGridView del formulario FormInicio para ordenar y actualizar las tareas mostradas en el DataGridView.
-            FormInicio.OrdenarDataGridView();
+            if (FormInicio != null)
+            {
+                await FormInicio.OrdenarDataGridView();
+            }
         }
 
         // Evento que se dispara al hacer clic en el botón para crear una nueva tarea.
-        private void btnCrear_Click_1(object sender, EventArgs e)
+        private async void btnCrear_Click_1(object sender, EventArgs e)
         {
-            // Mensaje de confirmación indicando que la tarea ha sido creada.
-            MessageBox.Show("La tarea fue creada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Se crea una nueva tarea con los valores del formulario.
-            Tarea nuevaTarea = new Tarea(txtNombre.Text, txtDescripcion.Text, (int)txtPrioridad.Value, txtCategoria.Text, txtFechaLimite.Value);
-
-            // Se registra la acción de agregar la nueva tarea en el historial.
-            PilaHistorialAcciones.RegistrarAccion(null, nuevaTarea, "Agregar");
-            nuevaTarea.Accion = "Agregar";
-
-            // Se agrega la tarea al gestor.
-            Gestor.AgregarTarea(nuevaTarea);
-
-            // Dependiendo de si el formulario de inicio o de tareas urgentes está abierto, se actualiza el DataGridView correspondiente.
-            if (FormInicio != null)
+            try
             {
-                FormInicio.ActualizarDGVPrincipal();
-            }
-            else
-            {
-                FormTareasUrgentes.ActualizarDGVTareaUrgente();
-            }
+                // Se crea una nueva tarea con los valores del formulario.
+                Tarea Tarea = new Tarea(txtNombre.Text, txtDescripcion.Text, (int)txtPrioridad.Value, txtCategoria.Text, txtFechaLimite.Value);
 
-            // Se limpia el formulario y se cierra.
-            LimpiarForm();
-            this.Close();
+                // Se registra la acción de agregar la nueva tarea en el historial.
+                PilaHistorialAcciones.RegistrarAccion(null, Tarea, "Agregar");
+                Tarea.Accion = "Agregar";
 
-            // Se abre el formulario de opciones.
-            if (FormInicio != null)
-            {
-                Form1.AbrirFormHijo(new FormOpciones(FormInicio.formPrincipal), FormInicio.formPrincipal.panelContenedor);
+                // Se agrega la tarea al gestor.
+                await Gestor.AgregarTarea(Tarea);
+
+                // Dependiendo de si el formulario de inicio o de tareas urgentes está abierto, se actualiza el DataGridView correspondiente.
+                if (FormInicio != null)
+                {
+                    await FormInicio.ActualizarDGVPrincipal();
+                }
+                else
+                {
+                    FormTareasUrgentes.ActualizarDGVTareaUrgente();
+                }
+
+                // Se limpia el formulario y se cierra.
+                LimpiarForm();
+                this.Close();
+
+                // Se abre el formulario de opciones.
+                if (FormInicio != null)
+                    Form1.AbrirFormHijo(new FormOpciones(FormInicio.formPrincipal), FormInicio.formPrincipal.panelContenedor);
+                else
+                    Form1.AbrirFormHijo(new FormOpciones(FormTareasUrgentes.formPrincipal), FormTareasUrgentes.formPrincipal.panelContenedor);
+
+                // Mensaje de confirmación indicando que la tarea ha sido creada.
+                MessageBox.Show("La tarea fue creada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Llama al método OrdenarDataGridView del formulario FormInicio para ordenar y actualizar las tareas mostradas en el DataGridView.
+                await FormInicio.OrdenarDataGridView();
             }
-            else
+            catch (Exception ex)
             {
-                Form1.AbrirFormHijo(new FormOpciones(FormTareasUrgentes.formPrincipal), FormTareasUrgentes.formPrincipal.panelContenedor);
+                MessageBox.Show($"Ocurrió un error al crear la tarea: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            // Llama al método OrdenarDataGridView del formulario FormInicio para ordenar y actualizar las tareas mostradas en el DataGridView.
-            FormInicio.OrdenarDataGridView();
         }
 
         // Evento que se dispara al hacer clic en el botón para eliminar una tarea.
-        private void btnEliminar_Click_1(object sender, EventArgs e)
+        private async void btnEliminar_Click_1(object sender, EventArgs e)
         {
             // Se confirma si el usuario realmente desea eliminar la tarea.
             DialogResult result = MessageBox.Show("¿Seguro que quieres eliminar esta Tarea?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -177,10 +185,10 @@ namespace GestorDeTareas
                 PilaHistorialAcciones.RegistrarAccion(tareaOriginal, null, "Eliminado");
 
                 // Se elimina la tarea del gestor.
-                Gestor.EliminarTarea(tareaSeleccionada);
+                await Gestor.EliminarTarea(tareaSeleccionada);
 
                 // Se actualiza el DataGridView del formulario principal.
-                FormInicio.ActualizarDGVPrincipal();
+                await FormInicio.ActualizarDGVPrincipal();
 
                 // Se limpia el formulario y se cierra.
                 LimpiarForm();
@@ -190,7 +198,7 @@ namespace GestorDeTareas
                 Form1.AbrirFormHijo(new FormOpciones(FormInicio.formPrincipal), FormInicio.formPrincipal.panelContenedor);
             }
             // Llama al método OrdenarDataGridView del formulario FormInicio para ordenar y actualizar las tareas mostradas en el DataGridView.
-            FormInicio.OrdenarDataGridView();
+            await FormInicio.OrdenarDataGridView();
         }
 
         // Evento que se dispara al hacer clic en el botón de cerrar.

@@ -28,10 +28,10 @@ namespace GestorDeTareas
             MostrarTareasEnTreeView(); // Llama al método para mostrar las tareas organizadas por categorías en el TreeView
         }
 
-        public void MostrarTareasEnTreeView()
+        public async Task MostrarTareasEnTreeView()
         {
             // Obtener la lista de todas las tareas a través del gestor de tareas
-            List<Tarea> listaTareas = Gestor.ObtenerTareas();
+            List<Tarea> listaTareas = await Gestor.ObtenerTareas();
 
             // Crear los nodos principales que representan las categorías
             NodoArbolCategoria nodoPersonal = new NodoArbolCategoria("Personal");

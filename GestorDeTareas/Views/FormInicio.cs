@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -33,39 +34,64 @@ namespace GestorDeTareas
         }
 
         // Método para actualizar el DataGridView con las tareas actuales
-        public void ActualizarDGVPrincipal()
+        public async Task ActualizarDGVPrincipal()
         {
-            dgvPrincipal.Rows.Clear(); // Limpia las filas actuales del DataGridView
-
-            // Recorre las tareas obtenidas desde el gestor y las agrega al DataGridView
-            foreach (var tarea in Gestor.ObtenerTareas())
+            try
             {
-                dgvPrincipal.Rows.Add(false, // Checkbox para selección
-                    tarea.Nombre, // Nombre de la tarea
-                    tarea.Descripcion, // Descripción de la tarea
-                    tarea.FechaVencimiento.ToShortDateString(), // Fecha de vencimiento
-                    tarea.Prioridad, // Prioridad de la tarea
-                    tarea.Estatus, // Estatus de la tarea
-                    tarea.Categoria, // Categoría de la tarea
-                    tarea.Id); // ID único de la tarea (columna oculta)
+                dgvPrincipal.Rows.Clear(); // Limpia las filas actuales del DataGridView
+
+                var tareas = await Gestor.ObtenerTareas();
+                foreach (var tarea in tareas)
+                {
+                    if(tarea.Estatus == "Pendiente")
+                    {
+                        dgvPrincipal.Rows.Add(false, // Checkbox para selección
+                        tarea.Nombre, // Nombre de la tarea
+                        tarea.Descripcion, // Descripción de la tarea
+                        tarea.FechaVencimiento.ToShortDateString(), // Fecha de vencimiento
+                        tarea.Prioridad, // Prioridad de la tarea
+                        tarea.Estatus, // Estatus de la tarea
+                        tarea.Categoria, // Categoría de la tarea
+                        tarea.Id); // ID único de la tarea (columna oculta)
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones
+                MessageBox.Show($"Error al actualizar las tareas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
 
         // Metodo que ordena las tareas dependiendo el valor tenga el ComboBox
-        public void OrdenarDataGridView()
+        public async Task OrdenarDataGridView()
         {
             // Limpia el DataGridView
             dgvPrincipal.Rows.Clear();
 
-            // Llama al método del Gestor para ordenar las tareas según el criterio seleccionado
-            Gestor.Ordernamiento(cmbOrdenamiento.Text);
-
             // Obtiene las tareas ya ordenadas
-            var tareasOrdenadas = Gestor.ObtenerTareas();
+            var tareas = await Gestor.ObtenerTareas();
+
+            // Dependiendo el valor del ComboBox, se ordenan las tareas
+            switch (cmbOrdenamiento.Text)
+            {
+                case "Prioridad":
+                    tareas = OrdenarPrioridad(tareas);
+                    break;
+                case "Antiguo":
+                    tareas = OrdenarAntiguo(tareas);
+                    break;
+                case "Fecha Limite":
+                    tareas = OrdenarFechaLimite(tareas);
+                    break;
+                default:
+                    tareas = OrdenarReciente(tareas);
+                    break;
+            }
 
             // Agrega las tareas ordenadas al DataGridView
-            foreach (var tarea in tareasOrdenadas)
+            foreach (var tarea in tareas)
             {
                 dgvPrincipal.Rows.Add(
                     false,
@@ -80,6 +106,30 @@ namespace GestorDeTareas
             }
         }
 
+        // Ordena la lista de tareas en orden descendente según la fecha de creación.
+        public static List<Tarea> OrdenarReciente(List<Tarea> tareas)
+        {
+            return tareas = tareas.OrderByDescending(t => t.FechaCreacion).ToList();
+        }
+
+        // Ordena la lista de tareas en orden ascendente según la fecha de creación.
+        public static List<Tarea> OrdenarAntiguo(List<Tarea> tareas)
+        {
+            return tareas = tareas.OrderBy(t => t.FechaCreacion).ToList();
+        }
+
+        // Ordena la lista de tareas en orden ascendente según la fecha de vencimiento.
+        public static List<Tarea> OrdenarFechaLimite(List<Tarea> tareas)
+        {
+            return tareas = tareas.OrderBy(t => t.FechaVencimiento).ToList();
+        }
+
+        // Ordena la lista de tareas en orden ascendente según la prioridad.
+        public static List<Tarea> OrdenarPrioridad(List<Tarea> tareas)
+        {
+            return tareas = tareas.OrderBy(t => t.Prioridad).ToList();
+        }
+
         // Evento del botón Añadir que abre un formulario para crear una nueva tarea
         private void btnAñádir_Click(object sender, EventArgs e)
         {
@@ -88,7 +138,7 @@ namespace GestorDeTareas
         }
 
         // Evento del botón Aplicar que procesa las tareas seleccionadas
-        private void btnAplicar_Click(object sender, EventArgs e)
+        private async void btnAplicar_Click(object sender, EventArgs e)
         {
             // Lista temporal para almacenar las tareas a eliminar o procesar
             List<Tarea> tareas = new List<Tarea>();
@@ -106,12 +156,14 @@ namespace GestorDeTareas
                         int tareaID = Convert.ToInt32(row.Cells["ColumnID"].Value);
 
                         // Busca la tarea en el gestor usando el ID
-                        Tarea tarea = Gestor.ObtenerTareas().FirstOrDefault(t => t.Id == tareaID);
+                        var tareasList = await Gestor.ObtenerTareas();
+                        Tarea tarea = tareasList.FirstOrDefault(t => t.Id == tareaID);
 
                         if (tarea != null)
                         {
                             // Actualiza el estatus de la tarea con el valor del combobox
                             tarea.Estatus = cmbEstatus.Text;
+                            await Gestor.ModificarTarea(tarea.Id, tarea); // Actualiza la tarea en el gestor
 
                             // Agrega la tarea a la lista para procesarla después
                             tareas.Add(tarea);
@@ -146,12 +198,12 @@ namespace GestorDeTareas
                     // Registra la acción de eliminar la tarea en el historial de acciones
                     PilaHistorialAcciones.RegistrarAccion(tareaOriginal, null, "Eliminado");
 
-                    Gestor.EliminarTarea(tarea); // Elimina la tarea del gestor
+                    await Gestor.EliminarTarea(tarea); // Elimina la tarea del gestor
                 }
             }
 
             // Actualiza el DataGridView y reinicia el combobox de estatus
-            ActualizarDGVPrincipal();
+            await ActualizarDGVPrincipal();
             cmbEstatus.Text = "Pendiente"; // Reinicia el valor del combobox
 
             // Regresa al formulario de opciones
@@ -159,7 +211,7 @@ namespace GestorDeTareas
         }
 
         // Evento para editar una tarea cuando se hace doble clic en una fila del DataGridView
-        private void dgvPrincipal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvPrincipal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0) // Verifica que la fila seleccionada es válida
             {
@@ -167,7 +219,8 @@ namespace GestorDeTareas
                 int tareaID = Convert.ToInt32(dgvPrincipal.Rows[e.RowIndex].Cells["ColumnID"].Value);
 
                 // Busca la tarea en el gestor usando el ID
-                Tarea tareaSeleccionada = Gestor.ObtenerTareas().FirstOrDefault(t => t.Id == tareaID);
+                var tareasList = await Gestor.ObtenerTareas();
+                Tarea tareaSeleccionada = tareasList.FirstOrDefault(t => t.Id == tareaID);
 
                 // Abre el formulario de consulta para editar la tarea seleccionada
                 Form1.AbrirFormHijo(new FormConsultarTarea(this, null, tareaSeleccionada), formPrincipal.panelContenedor);
@@ -175,35 +228,35 @@ namespace GestorDeTareas
         }
 
        
-        private void cmbOrdenamiento_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cmbOrdenamiento_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Llama al método OrdenarDataGridView y actualiza las tareas mostradas en el DataGridView.
-            OrdenarDataGridView();
+            await OrdenarDataGridView();
         }
 
         // Evento que deshace la última acción realizada
-        private void btnDeshacer_Click(object sender, EventArgs e)
+        private async void btnDeshacer_Click(object sender, EventArgs e)
         {
-            PilaHistorialAcciones.Deshacer(); // Deshace la última acción
+            await PilaHistorialAcciones.Deshacer(); // Deshace la última acción
 
-            ActualizarDGVPrincipal(); // Actualiza el DataGridView
+            await ActualizarDGVPrincipal(); // Actualiza el DataGridView
 
             // Llama al método OrdenarDataGridView y actualiza las tareas mostradas en el DataGridView.
-            OrdenarDataGridView();
+            await OrdenarDataGridView();
 
             // Regresa al formulario de opciones
             Form1.AbrirFormHijo(new FormOpciones(formPrincipal), formPrincipal.panelContenedor);
         }
 
         // Evento que rehace la última acción deshecha
-        private void btnRehacer_Click(object sender, EventArgs e)
+        private async void btnRehacer_Click(object sender, EventArgs e)
         {
-            PilaHistorialAcciones.Rehacer(); // Rehace la última acción deshecha
+            await PilaHistorialAcciones.Rehacer(); // Rehace la última acción deshecha
 
-            ActualizarDGVPrincipal(); // Actualiza el DataGridView
+            await ActualizarDGVPrincipal(); // Actualiza el DataGridView
 
             // Llama al método OrdenarDataGridView y actualiza las tareas mostradas en el DataGridView.
-            OrdenarDataGridView();
+            await OrdenarDataGridView();
 
             // Regresa al formulario de opciones
             Form1.AbrirFormHijo(new FormOpciones(formPrincipal), formPrincipal.panelContenedor);
