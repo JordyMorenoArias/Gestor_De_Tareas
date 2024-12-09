@@ -25,7 +25,7 @@ namespace GestorDeTareas
             InitializeComponent();
             formPrincipal = form1; // Guarda la referencia al formulario principal
 
-            MostrarTareasEnTreeView(); // Llama al método para mostrar las tareas organizadas por categorías en el TreeView
+            Task task = MostrarTareasEnTreeView(); // Llama al método para mostrar las tareas organizadas por categorías en el TreeView
         }
 
         public async Task MostrarTareasEnTreeView()

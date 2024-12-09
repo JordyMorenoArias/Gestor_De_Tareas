@@ -39,11 +39,12 @@ namespace GestorDeTareas
             try
             {
                 dgvPrincipal.Rows.Clear(); // Limpia las filas actuales del DataGridView
+                ColaTareasUrgentes.LimpiarCola(); // Limpia la cola de tareas urgentes
 
                 var tareas = await Gestor.ObtenerTareas();
                 foreach (var tarea in tareas)
                 {
-                    if(tarea.Estatus == "Pendiente")
+                    if (tarea.Estatus == "Pendiente")
                     {
                         dgvPrincipal.Rows.Add(false, // Checkbox para selección
                         tarea.Nombre, // Nombre de la tarea
@@ -53,6 +54,10 @@ namespace GestorDeTareas
                         tarea.Estatus, // Estatus de la tarea
                         tarea.Categoria, // Categoría de la tarea
                         tarea.Id); // ID único de la tarea (columna oculta)
+                    }
+                    else if (tarea.Estatus == "Urgente")
+                    {
+                        ColaTareasUrgentes.AgregarTareaUrgente(tarea);
                     }
                 }
             }
@@ -77,16 +82,16 @@ namespace GestorDeTareas
             switch (cmbOrdenamiento.Text)
             {
                 case "Prioridad":
-                    tareas = OrdenarPrioridad(tareas);
+                    tareas = OrdenarPrioridad(tareas.Where(t => t.Estatus == "Pendiente").ToList());
                     break;
                 case "Antiguo":
-                    tareas = OrdenarAntiguo(tareas);
+                    tareas = OrdenarAntiguo(tareas.Where(t => t.Estatus == "Pendiente").ToList());
                     break;
                 case "Fecha Limite":
-                    tareas = OrdenarFechaLimite(tareas);
+                    tareas = OrdenarFechaLimite(tareas.Where(t => t.Estatus == "Pendiente").ToList());
                     break;
                 default:
-                    tareas = OrdenarReciente(tareas);
+                    tareas = OrdenarReciente(tareas.Where(t => t.Estatus == "Pendiente").ToList());
                     break;
             }
 
@@ -140,74 +145,74 @@ namespace GestorDeTareas
         // Evento del botón Aplicar que procesa las tareas seleccionadas
         private async void btnAplicar_Click(object sender, EventArgs e)
         {
-            // Lista temporal para almacenar las tareas a eliminar o procesar
-            List<Tarea> tareas = new List<Tarea>();
+            DialogResult result = MessageBox.Show("¿Seguro que quieres agregar estas tareas a la Cola de Urgentes?", "Esta acción no es reversible", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            // Recorre las filas del DataGridView para verificar las tareas seleccionadas
-            foreach (DataGridViewRow row in dgvPrincipal.Rows)
+            if (result == DialogResult.Yes)
             {
-                if (!row.IsNewRow) // Si no es una fila nueva
+
+                // Lista temporal para almacenar las tareas a eliminar o procesar
+                List<Tarea> tareas = new List<Tarea>();
+
+                // Recorre las filas del DataGridView para verificar las tareas seleccionadas
+                foreach (DataGridViewRow row in dgvPrincipal.Rows)
                 {
-                    bool isChecked = Convert.ToBoolean(row.Cells[0].Value); // Verifica si la tarea está seleccionada (checkbox marcado)
-
-                    if (isChecked)
+                    if (!row.IsNewRow) // Si no es una fila nueva
                     {
-                        // Obtiene el ID de la tarea desde la columna oculta
-                        int tareaID = Convert.ToInt32(row.Cells["ColumnID"].Value);
+                        bool isChecked = Convert.ToBoolean(row.Cells[0].Value); // Verifica si la tarea está seleccionada (checkbox marcado)
 
-                        // Busca la tarea en el gestor usando el ID
-                        var tareasList = await Gestor.ObtenerTareas();
-                        Tarea tarea = tareasList.FirstOrDefault(t => t.Id == tareaID);
-
-                        if (tarea != null)
+                        if (isChecked)
                         {
-                            // Actualiza el estatus de la tarea con el valor del combobox
-                            tarea.Estatus = cmbEstatus.Text;
-                            await Gestor.ModificarTarea(tarea.Id, tarea); // Actualiza la tarea en el gestor
+                            // Obtiene el ID de la tarea desde la columna oculta
+                            int tareaID = Convert.ToInt32(row.Cells["ColumnID"].Value);
 
-                            // Agrega la tarea a la lista para procesarla después
-                            tareas.Add(tarea);
+                            // Busca la tarea en el gestor usando el ID
+                            var tareasList = await Gestor.ObtenerTareas();
+                            Tarea tarea = tareasList.FirstOrDefault(t => t.Id == tareaID);
+
+                            if (tarea != null)
+                            {
+                                // Actualiza el estatus de la tarea con el valor del combobox
+                                tarea.Estatus = cmbEstatus.Text;
+                                await Gestor.ModificarTarea(tarea.Id, tarea); // Actualiza la tarea en el gestor
+
+                                // Agrega la tarea a la lista para procesarla después
+                                tareas.Add(tarea);
+                            }
                         }
                     }
                 }
-            }
 
-            // Si el estatus es "Urgente", muestra un cuadro de confirmación
-            if (cmbEstatus.Text == "Urgente")
-            {
-                DialogResult result = MessageBox.Show("¿Seguro que quieres agregar estas tareas a la Cola de Urgentes?", "Esta acción no es reversible", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
+                // Si el estatus es "Urgente", muestra un cuadro de confirmación
+                if (cmbEstatus.Text == "Urgente")
                 {
                     // Si el usuario confirma, agrega las tareas a la cola de urgentes y las elimina del gestor
                     foreach (Tarea tarea in tareas)
                     {
                         ColaTareasUrgentes.AgregarTareaUrgente(tarea); // Agrega la tarea a la cola de urgentes
-                        Gestor.EliminarTarea(tarea); // Elimina la tarea del gestor
+                    }
+
+                }
+                else if (cmbEstatus.Text == "Completado")
+                {
+                    // Procesa las tareas marcadas como "Completadas"
+                    foreach (Tarea tarea in tareas)
+                    {
+                        tarea.Accion = "Eliminado"; // Marca la acción como "Eliminado"
+                        Tarea tareaOriginal = tarea; // Crea una copia de la tarea original
+
+                        // Registra la acción de eliminar la tarea en el historial de acciones
+                        PilaHistorialAcciones.RegistrarAccion(tareaOriginal, null, "Eliminado");
+                        await Gestor.EliminarTarea(tarea); // Elimina la tarea del gestor
                     }
                 }
+
+                // Actualiza el DataGridView y reinicia el combobox de estatus
+                await ActualizarDGVPrincipal();
+                cmbEstatus.Text = "Pendiente"; // Reinicia el valor del combobox
+
+                // Regresa al formulario de opciones
+                Form1.AbrirFormHijo(new FormOpciones(formPrincipal), formPrincipal.panelContenedor);
             }
-            else if (cmbEstatus.Text == "Completado")
-            {
-                // Procesa las tareas marcadas como "Completadas"
-                foreach (Tarea tarea in tareas)
-                {
-                    tarea.Accion = "Eliminado"; // Marca la acción como "Eliminado"
-                    Tarea tareaOriginal = tarea; // Crea una copia de la tarea original
-
-                    // Registra la acción de eliminar la tarea en el historial de acciones
-                    PilaHistorialAcciones.RegistrarAccion(tareaOriginal, null, "Eliminado");
-
-                    await Gestor.EliminarTarea(tarea); // Elimina la tarea del gestor
-                }
-            }
-
-            // Actualiza el DataGridView y reinicia el combobox de estatus
-            await ActualizarDGVPrincipal();
-            cmbEstatus.Text = "Pendiente"; // Reinicia el valor del combobox
-
-            // Regresa al formulario de opciones
-            Form1.AbrirFormHijo(new FormOpciones(formPrincipal), formPrincipal.panelContenedor);
         }
 
         // Evento para editar una tarea cuando se hace doble clic en una fila del DataGridView
@@ -220,14 +225,14 @@ namespace GestorDeTareas
 
                 // Busca la tarea en el gestor usando el ID
                 var tareasList = await Gestor.ObtenerTareas();
-                Tarea tareaSeleccionada = tareasList.FirstOrDefault(t => t.Id == tareaID);
+                Tarea? tareaSeleccionada = tareasList.FirstOrDefault(t => t.Id == tareaID);
 
                 // Abre el formulario de consulta para editar la tarea seleccionada
                 Form1.AbrirFormHijo(new FormConsultarTarea(this, null, tareaSeleccionada), formPrincipal.panelContenedor);
             }
         }
 
-       
+
         private async void cmbOrdenamiento_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Llama al método OrdenarDataGridView y actualiza las tareas mostradas en el DataGridView.

@@ -57,5 +57,11 @@ namespace GestorDeTareas.Models
             // Reemplazar la cola original con la nueva
             colaTareasUrgentes = nuevaCola;
         }
+
+        // Método para limpiar la cola de tareas urgentes.
+        public static void LimpiarCola()
+        {
+            colaTareasUrgentes.Clear();
+        }
     }
 }

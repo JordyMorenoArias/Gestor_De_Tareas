@@ -43,12 +43,30 @@ namespace GestorDeTareas
             }
         }
 
-        private void btnCompletada_Click(object sender, EventArgs e)
+        private async void btnCompletada_Click(object sender, EventArgs e)
         {
-            // Muestra un mensaje de confirmación indicando que la tarea urgente ha sido procesada
-            MessageBox.Show($"La Tarea {ColaTareasUrgentes.ProcesarTareaUrgente().Nombre} fue Completada", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Procesa la tarea urgente más antigua de la cola
+            Tarea tareaProcesada = ColaTareasUrgentes.ProcesarTareaUrgente();
 
-            ActualizarDGVTareaUrgente(); // Actualiza el DataGridView después de procesar una tarea
+            if (tareaProcesada != null)
+            {
+                // Cambia la propiedad Activo de la tarea a false
+                tareaProcesada.Activo = false;
+
+                // Actualiza la tarea en la base de datos
+                await Gestor.ModificarTarea(tareaProcesada.Id, tareaProcesada);
+
+                // Muestra un mensaje de confirmación indicando que la tarea urgente ha sido procesada
+                MessageBox.Show($"La Tarea {tareaProcesada.Nombre} fue Completada", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Actualiza el DataGridView después de procesar una tarea
+                ActualizarDGVTareaUrgente();
+            }
+            else
+            {
+                // Muestra un mensaje si no hay tareas urgentes para procesar
+                MessageBox.Show("No hay tareas urgentes para procesar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         // Evento que se activa cuando se hace doble clic en una celda del DataGridView

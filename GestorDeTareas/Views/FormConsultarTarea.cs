@@ -21,11 +21,11 @@ namespace GestorDeTareas
         private FormTareasUrgentes FormTareasUrgentes { get; set; }
 
         // Variable para almacenar la tarea seleccionada que se va a editar o consultar.
-        private Tarea tareaSeleccionada { get; set; }
+        private Tarea? tareaSeleccionada { get; set; }
 
         // Constructor del formulario, donde se pasan instancias del formulario de inicio, el formulario de tareas urgentes y la tarea seleccionada.
         // Si la tarea es nula, se habilita la opción de crear una nueva tarea.
-        public FormConsultarTarea(FormInicio FormInicio, FormTareasUrgentes formTareasUrgentes, Tarea tarea)
+        public FormConsultarTarea(FormInicio FormInicio, FormTareasUrgentes formTareasUrgentes, Tarea? tarea)
         {
             InitializeComponent(); // Inicializa los componentes del formulario.
 
@@ -80,7 +80,7 @@ namespace GestorDeTareas
                 if (FormInicio != null)
                 {
                     // Se guarda la acción de "Modificar" y se copia la tarea original.
-                    tareaSeleccionada.Accion = "Modificar";
+                    tareaSeleccionada!.Accion = "Modificar";
                     Tarea tareaAnterior = tareaSeleccionada; // Copia de la tarea original.
 
                     // Se crea una nueva tarea con los valores modificados.
