@@ -30,7 +30,8 @@ namespace GestorDeTareas
 
             this.formPrincipal = formPrincipal; // Guarda la referencia al formulario principal
 
-            ActualizarDGVPrincipal(); // Llama al método para actualizar el DataGridView con las tareas
+            // Llama al método para actualizar el DataGridView con las tareas
+            _ = ActualizarDGVPrincipal();
         }
 
         // Método para actualizar el DataGridView con las tareas actuales
@@ -42,11 +43,12 @@ namespace GestorDeTareas
                 ColaTareasUrgentes.LimpiarCola(); // Limpia la cola de tareas urgentes
 
                 var tareas = await Gestor.ObtenerTareas();
-                foreach (var tarea in tareas)
+
+                // Filtra las tareas pendientes y las agrega al DataGridView
+                var tareasPendientes = tareas.Where(t => t.Estatus == "Pendiente");
+                foreach (var tarea in tareasPendientes)
                 {
-                    if (tarea.Estatus == "Pendiente")
-                    {
-                        dgvPrincipal.Rows.Add(false, // Checkbox para selección
+                    dgvPrincipal.Rows.Add(false, // Checkbox para selección
                         tarea.Nombre, // Nombre de la tarea
                         tarea.Descripcion, // Descripción de la tarea
                         tarea.FechaVencimiento.ToShortDateString(), // Fecha de vencimiento
@@ -54,11 +56,13 @@ namespace GestorDeTareas
                         tarea.Estatus, // Estatus de la tarea
                         tarea.Categoria, // Categoría de la tarea
                         tarea.Id); // ID único de la tarea (columna oculta)
-                    }
-                    else if (tarea.Estatus == "Urgente")
-                    {
-                        ColaTareasUrgentes.AgregarTareaUrgente(tarea);
-                    }
+                }
+
+                // Filtra las tareas urgentes y las agrega a la cola de tareas urgentes
+                var tareasUrgentes = tareas.Where(t => t.Estatus == "Urgente");
+                foreach (var tarea in tareasUrgentes)
+                {
+                    ColaTareasUrgentes.AgregarTareaUrgente(tarea);
                 }
             }
             catch (Exception ex)
