@@ -1,7 +1,52 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|c:\\users\\yordi\\source\\repos\\gestordetareas\\gestordetareas\\views\\formconsultartarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\views\\formconsultartarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|c:\\users\\yordi\\source\\repos\\gestordetareas\\gestordetareas\\models\\pilahistorialacciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\models\\pilahistorialacciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|c:\\users\\yordi\\source\\repos\\gestordetareas\\gestordetareas\\views\\forminicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\views\\forminicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\gestordetareas\\views\\forminicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\views\\forminicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\gestordetareas\\views\\formconsultartarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\views\\formconsultartarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|c:\\users\\yordi\\source\\repos\\gestordetareas\\gestordetareas\\views\\formtareasurgentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\views\\formtareasurgentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|c:\\users\\yordi\\source\\repos\\gestordetareas\\gestordetareas\\models\\colatareasurgentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\models\\colatareasurgentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\gestordetareas\\views\\formtareasurgentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\views\\formtareasurgentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|c:\\users\\yordi\\source\\repos\\gestordetareas\\gestordetareas\\models\\gestor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\models\\gestor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|c:\\users\\yordi\\source\\repos\\gestordetareas\\gestordetareas\\views\\formopciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\views\\formopciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|c:\\users\\yordi\\source\\repos\\gestordetareas\\gestordetareas\\models\\tarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66112F11-E4F5-42E9-92F7-23CC8357F479}|GestorDeTareas\\GestorDeTareas.csproj|solutionrelative:gestordetareas\\models\\tarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,6 +75,141 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ColaTareasUrgentes.cs",
+              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Models\\ColaTareasUrgentes.cs",
+              "RelativeDocumentMoniker": "GestorDeTareas\\Models\\ColaTareasUrgentes.cs",
+              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Models\\ColaTareasUrgentes.cs",
+              "RelativeToolTip": "GestorDeTareas\\Models\\ColaTareasUrgentes.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwEAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T15:14:29.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FormInicio.cs",
+              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormInicio.cs",
+              "RelativeDocumentMoniker": "GestorDeTareas\\Views\\FormInicio.cs",
+              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormInicio.cs",
+              "RelativeToolTip": "GestorDeTareas\\Views\\FormInicio.cs",
+              "ViewState": "AgIAALMAAAAAAAAAAAAjwMsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T17:23:46.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FormInicio.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormInicio.cs",
+              "RelativeDocumentMoniker": "GestorDeTareas\\Views\\FormInicio.cs",
+              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormInicio.cs [Design]",
+              "RelativeToolTip": "GestorDeTareas\\Views\\FormInicio.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T15:02:27.085Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FormTareasUrgentes.cs",
+              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormTareasUrgentes.cs",
+              "RelativeDocumentMoniker": "GestorDeTareas\\Views\\FormTareasUrgentes.cs",
+              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormTareasUrgentes.cs",
+              "RelativeToolTip": "GestorDeTareas\\Views\\FormTareasUrgentes.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAiwCsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T15:02:06.54Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FormConsultarTarea.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormConsultarTarea.cs",
+              "RelativeDocumentMoniker": "GestorDeTareas\\Views\\FormConsultarTarea.cs",
+              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormConsultarTarea.cs [Design]",
+              "RelativeToolTip": "GestorDeTareas\\Views\\FormConsultarTarea.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T20:02:09.405Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormConsultarTarea.cs",
+              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormConsultarTarea.cs",
+              "RelativeDocumentMoniker": "GestorDeTareas\\Views\\FormConsultarTarea.cs",
+              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormConsultarTarea.cs",
+              "RelativeToolTip": "GestorDeTareas\\Views\\FormConsultarTarea.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAswIQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T15:06:36.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PilaHistorialAcciones.cs",
+              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Models\\PilaHistorialAcciones.cs",
+              "RelativeDocumentMoniker": "GestorDeTareas\\Models\\PilaHistorialAcciones.cs",
+              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Models\\PilaHistorialAcciones.cs",
+              "RelativeToolTip": "GestorDeTareas\\Models\\PilaHistorialAcciones.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAIAywBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T19:36:07.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FormTareasUrgentes.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormTareasUrgentes.cs",
+              "RelativeDocumentMoniker": "GestorDeTareas\\Views\\FormTareasUrgentes.cs",
+              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormTareasUrgentes.cs [Design]",
+              "RelativeToolTip": "GestorDeTareas\\Views\\FormTareasUrgentes.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T15:02:04.567Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FormOpciones.cs",
+              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormOpciones.cs",
+              "RelativeDocumentMoniker": "GestorDeTareas\\Views\\FormOpciones.cs",
+              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Views\\FormOpciones.cs",
+              "RelativeToolTip": "GestorDeTareas\\Views\\FormOpciones.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T20:27:00.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Gestor.cs",
+              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Models\\Gestor.cs",
+              "RelativeDocumentMoniker": "GestorDeTareas\\Models\\Gestor.cs",
+              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Models\\Gestor.cs",
+              "RelativeToolTip": "GestorDeTareas\\Models\\Gestor.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAewDkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T18:59:57.854Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Tarea.cs",
+              "DocumentMoniker": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Models\\Tarea.cs",
+              "RelativeDocumentMoniker": "GestorDeTareas\\Models\\Tarea.cs",
+              "ToolTip": "C:\\Users\\yordi\\source\\repos\\GestorDeTareas\\GestorDeTareas\\Models\\Tarea.cs",
+              "RelativeToolTip": "GestorDeTareas\\Models\\Tarea.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAuwAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T14:56:07.666Z"
             }
           ]
         }
